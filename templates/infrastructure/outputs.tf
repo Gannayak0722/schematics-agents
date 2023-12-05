@@ -60,35 +60,35 @@ output "subnet_tier_list" {
 # Cluster Outputs
 ##############################################################################
 
-output "cluster_id" {
-  description = "ID of cluster created"
-  value       = module.vpc_cluster.*.id
-}
+# output "cluster_id" {
+#   description = "ID of cluster created"
+#   value       = module.vpc_cluster.*.id
+# }
 
-output "cluster_name" {
-  description = "Name of cluster created"
-  value       = module.vpc_cluster.*.name
-}
+# output "cluster_name" {
+#   description = "Name of cluster created"
+#   value       = module.vpc_cluster.*.name
+# }
 
-output "cluster_private_service_endpoint_url" {
-  description = "URL For Cluster Private Service Endpoint"
-  value       = module.vpc_cluster.*.private_service_endpoint_url
-}
+# output "cluster_private_service_endpoint_url" {
+#   description = "URL For Cluster Private Service Endpoint"
+#   value       = module.vpc_cluster.*.private_service_endpoint_url
+# }
 
-output "cluster_private_service_endpoint_port" {
-  description = "Port for Cluster private service endpoint"
-  value       = module.vpc_cluster.*.private_service_endpoint_port
-}
+# output "cluster_private_service_endpoint_port" {
+#   description = "Port for Cluster private service endpoint"
+#   value       = module.vpc_cluster.*.private_service_endpoint_port
+# }
 
-##############################################################################
+# ##############################################################################
 
-##############################################################################
-# Logging and Monitoring Outputs
-##############################################################################
+# ##############################################################################
+# # Logging and Monitoring Outputs
+# ##############################################################################
 
-output "logdna_name" {
-  description = "Name of LogDna created"
-  value       = module.observability.*.logdna_name
-}
+# output "logdna_name" {
+#   description = "Name of LogDna created"
+#   value       = module.observability.*.logdna_name
+# }
 
-##############################################################################
+# ##############################################################################
