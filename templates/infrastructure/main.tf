@@ -64,14 +64,14 @@ module "multizone_vpc" {
 # observability
 ##############################################################################
 
-module "observability" {
-  count                = (local.enable_observability ? 1 : 0)
-  enable_observability = local.enable_observability
-  source               = "./observability"
-  prefix               = var.agent_prefix
-  region               = var.location
-  resource_group_id    = data.ibm_resource_group.resource_group.id
-}
+# module "observability" {
+#   count                = (local.enable_observability ? 1 : 0)
+#   enable_observability = local.enable_observability
+#   source               = "./observability"
+#   prefix               = var.agent_prefix
+#   region               = var.location
+#   resource_group_id    = data.ibm_resource_group.resource_group.id
+# }
 
 ##############################################################################
 
@@ -80,36 +80,36 @@ module "observability" {
 # Create Cluster
 ##############################################################################
 
-data "ibm_container_cluster_versions" "cluster_versions" {
-  region = var.location
-}
+# data "ibm_container_cluster_versions" "cluster_versions" {
+#   region = var.location
+# }
 
-locals {
-  # Get latest openshift version
-  # https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions
-  latest = "${
-    data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions[
-      length(data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions) - 1
-  ]}_openshift"
-}
+# locals {
+#   # Get latest openshift version
+#   # https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions
+#   latest = "${
+#     data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions[
+#       length(data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions) - 1
+#   ]}_openshift"
+# }
 
-module "vpc_cluster" {
-  count          = (local.create_cluster ? 1 : 0)
-  create_cluster = local.create_cluster
-  source         = "./cluster"
-  # Account Variables
-  prefix            = var.agent_prefix
-  region            = var.location
-  resource_group_id = data.ibm_resource_group.resource_group.id
-  # VPC Variables
-  vpc_id  = (local.create_cluster ? module.multizone_vpc[0].vpc_id : 0)
-  subnets = module.multizone_vpc[0].subnet_tier_list["vpc"]
-  # Cluster Variables
-  machine_type     = local.machine_type
-  workers_per_zone = local.workers_per_zone
-  kube_version     = local.kube_version #local.latest
-  tags             = var.tags
-  worker_pools     = local.worker_pools
-}
+# module "vpc_cluster" {
+#   count          = (local.create_cluster ? 1 : 0)
+#   create_cluster = local.create_cluster
+#   source         = "./cluster"
+#   # Account Variables
+#   prefix            = var.agent_prefix
+#   region            = var.location
+#   resource_group_id = data.ibm_resource_group.resource_group.id
+#   # VPC Variables
+#   vpc_id  = (local.create_cluster ? module.multizone_vpc[0].vpc_id : 0)
+#   subnets = module.multizone_vpc[0].subnet_tier_list["vpc"]
+#   # Cluster Variables
+#   machine_type     = local.machine_type
+#   workers_per_zone = local.workers_per_zone
+#   kube_version     = local.kube_version #local.latest
+#   tags             = var.tags
+#   worker_pools     = local.worker_pools
+# }
 
 ##############################################################################
