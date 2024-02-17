@@ -64,14 +64,14 @@ module "multizone_vpc" {
 # observability
 ##############################################################################
 
-module "observability" {
-  count                = (local.enable_observability ? 1 : 0)
-  enable_observability = local.enable_observability
-  source               = "./observability"
-  prefix               = var.agent_prefix
-  region               = var.location
-  resource_group_id    = data.ibm_resource_group.resource_group.id
-}
+# module "observability" {
+#   count                = (local.enable_observability ? 1 : 0)
+#   enable_observability = local.enable_observability
+#   source               = "./observability"
+#   prefix               = var.agent_prefix
+#   region               = var.location
+#   resource_group_id    = data.ibm_resource_group.resource_group.id
+# }
 
 ##############################################################################
 

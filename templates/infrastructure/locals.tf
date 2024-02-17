@@ -12,7 +12,7 @@ locals {
   #Enable this to provision VPC cluster.
   create_cluster = true
   #True to create new Observability Services. False if Observability Service instances are already existing.
-  enable_observability = true
+  # enable_observability = true
 }
 
 locals {

@@ -33,7 +33,7 @@ resource "ibm_resource_instance" "activity_tracker" {
 ##############################################################################
 
 resource "ibm_resource_instance" "logdna" {
-  count             = var.enable_observability == true ? 1 : 0
+  # count             = var.enable_observability == true ? 1 : 0
   name              = "${var.prefix}-logdna"
   location          = var.region
   plan              = var.logdna_plan

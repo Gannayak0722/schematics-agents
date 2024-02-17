@@ -12,10 +12,10 @@
 # Variables
 ##############################################################################
 
-variable "enable_observability" {
-  description = "True to create new Observability Services. False if Observability Service instances are already existing."
-  type        = bool
-}
+# variable "enable_observability" {
+#   description = "True to create new Observability Services. False if Observability Service instances are already existing."
+#   type        = bool
+# }
 
 variable "prefix" {
   description = "A unique identifier need to provision resources. Must begin with a letter"
